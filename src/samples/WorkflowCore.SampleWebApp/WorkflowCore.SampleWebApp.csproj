@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\extensions\WorkflowCore.Users\WorkflowCore.Users.csproj" />
+    <ProjectReference Include="..\..\providers\WorkflowCore.Persistance.Oracle\WorkflowCore.Persistance.Oracle.csproj" />
+    <ProjectReference Include="..\..\providers\WorkflowCore.Providers.Elasticsearch\WorkflowCore.Providers.Elasticsearch.csproj" />
+  </ItemGroup>
+
+</Project>

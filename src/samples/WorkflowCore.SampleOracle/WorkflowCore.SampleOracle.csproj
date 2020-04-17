@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\extensions\WorkflowCore.Users\WorkflowCore.Users.csproj" />
-    <ProjectReference Include="..\WorkflowCore.Persistance.Oracle\WorkflowCore.Persistance.Oracle.csproj" />
+    <ProjectReference Include="..\..\extensions\WorkflowCore.Users\WorkflowCore.Users.csproj" />
+    <ProjectReference Include="..\..\providers\WorkflowCore.Persistance.Oracle\WorkflowCore.Persistance.Oracle.csproj" />
   </ItemGroup>
 
 </Project>
