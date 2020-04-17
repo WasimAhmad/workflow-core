@@ -1,19 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using WorkflowCore.Interface;
 
-namespace WorkflowCore.Sample08
+namespace WorkflowCore.SampleOracle
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            IServiceProvider serviceProvider = ConfigureServices();
+            ServiceProvider serviceProvider = (Microsoft.Extensions.DependencyInjection.ServiceProvider)ConfigureServices();
 
             //start the workflow host
             var host = serviceProvider.GetService<IWorkflowHost>();
@@ -59,7 +56,6 @@ namespace WorkflowCore.Sample08
             Console.ReadLine();
             host.Stop();
         }
-
         private static void PrintOptions(IWorkflowHost host, string workflowId)
         {
             var openItems = host.GetOpenUserActions(workflowId);
@@ -73,23 +69,15 @@ namespace WorkflowCore.Sample08
                 }
             }
         }
-
         private static IServiceProvider ConfigureServices()
         {
             //setup dependency injection
             IServiceCollection services = new ServiceCollection();
             services.AddLogging();
             //services.AddWorkflow();
-            services.AddWorkflow(x => x.UseMongoDB(@"mongodb://localhost:27017", "workflow3"));
-            //services.AddWorkflow(x => x.UseSqlServer(@"Server=.;Database=WorkflowCore3;Trusted_Connection=True;", true, true));            
-            //services.AddWorkflow(x => x.UseSqlite(@"Data Source=database2.db;", true));            
-
-
+            services.AddWorkflow(x => x.UseOracle(@"Data Source=localhost:1522/db19c;User Id=WorkFlowEngine;Password=WorkFlowEngine", false, true));
             var serviceProvider = services.BuildServiceProvider();
-
             return serviceProvider;
         }
-
-
     }
 }
